@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sources":["../src/main.js"],"sourcesContent":["const form = document.querySelector(\".form\");\nconst input = form.elements[\"search-text\"];"],"names":["form"],"mappings":"ssBAAA,MAAMA,EAAO,SAAS,cAAc,OAAO,EAC7BA,EAAK,SAAS,aAAa"}
