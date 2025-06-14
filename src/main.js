@@ -18,8 +18,8 @@ form.addEventListener("submit", event => {
         return;
     };
 
+clearGallery();   
 showLoader();
-clearGallery();
 
 getImagesByQuery(query)
     .then(data => {
