@@ -16,6 +16,6 @@ export const getImagesByQuery = query => {
         .get(URL, { params })
         .then(response => response.data)
         .catch(error => {
-            throw new Error("Failed to fetch images");
+            throw new Error("Oops! Something went wrong. Please try again later.");
         });
 };

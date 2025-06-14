@@ -1,8 +1,6 @@
 import { getImagesByQuery } from "./js/pixabay-api";
 import { createGallery, clearGallery, showLoader, hideLoader } from "./js/render-functions";
-// Описаний у документації
 import iziToast from "izitoast";
-// Додатковий імпорт стилів
 import "izitoast/dist/css/iziToast.min.css";
 
 
@@ -13,7 +11,7 @@ form.addEventListener("submit", event => {
     event.preventDefault();
     const query = input.value.trim();
     if (!query) {
-        iziToast.warning({
+        iziToast.error({
             message: "Please enter a search term!",
             position: "topRight",
         });
@@ -26,7 +24,7 @@ clearGallery();
 getImagesByQuery(query)
     .then(data => {
         if (!data.hits.length) {
-            iziToast.info({
+            iziToast.error({
                 message: "Sorry, there are no images matching your search query. Please try again!",
                 position: "topRight",
             });
@@ -34,11 +32,14 @@ getImagesByQuery(query)
         };
         createGallery(data.hits);
     })
-    .catch(() => {
+    .catch(error => {
         iziToast.error({
             message: "Oops! Something went wrong. Please try again later.",
             position: "topRight"
         });
     })
-    .finally(() => { hideLoader(); });
+    .finally(() => {
+        hideLoader(); 
+        input.value = "";
+    });
 });
